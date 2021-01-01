@@ -131,7 +131,7 @@ print(resp.json())
 ![](screen_shots/hyperdrive/testwebserivce.png)
 
 ## Screen Recording
-We have provided a [recording]("https://youtu.be/ytwlGUidHyo") that demonstrate:
+We have provided a ![recording]("https://youtu.be/ytwlGUidHyo") that demonstrate:
 - A working model
 - Demo of the deployed  model
 - Demo of a sample request sent to the endpoint and its response
