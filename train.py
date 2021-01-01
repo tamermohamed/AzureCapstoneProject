@@ -13,7 +13,6 @@ from azureml.core.dataset import Dataset
 
 run = Run.get_context()
 
-
 def clean_data(data):
     embarked = {"C": 1, "S": 2, "Q": 3}
     # Clean and one hot encode data
@@ -33,14 +32,11 @@ def clean_data(data):
 
     return x_df, y_df
 
+dataset =pd.read_csv('data/titanic.csv') 
 
-pd.set_option('mode.chained_assignment', None)
-dataset = TabularDatasetFactory.from_delimited_files("https://www.openml.org/data/get_csv/16826755/phpMYEkMl")
-ds = dataset.to_pandas_dataframe()
+x, y = clean_data(dataset)
 
-x, y = clean_data(ds)
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.30, shuffle=True)
-
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.20, shuffle=True)
 
 def main():
     # Add arguments to script
@@ -58,8 +54,10 @@ def main():
     model = LogisticRegression(C=args.C, max_iter=args.max_iter).fit(x_train, y_train)
 
     accuracy = model.score(x_test, y_test)
+    
+    joblib.dump(model, 'outputs/model.pkl')
+    
     run.log("Accuracy", np.float(accuracy))
-
 
 if __name__ == '__main__':
     main()
