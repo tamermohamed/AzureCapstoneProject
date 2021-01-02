@@ -135,3 +135,9 @@ We have provided a [recording](https://youtu.be/ytwlGUidHyo) that demonstrate:
 - A working model
 - Demo of the deployed  model
 - Demo of a sample request sent to the endpoint and its response
+
+## Future Work
+
+To improve this work for both methodologies that we have used, we need to make more processing on data and study the relations between inputs to get better understanding of inputs that really affect the output,for our custome code we can extend the hyperparamter search space and examine if we can get better results.
+
+We can also improve our webseervice by tracking the log of the service and get notified when something seires has happend, and monitor the performanc of the serivce
